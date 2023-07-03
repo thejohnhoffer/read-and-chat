@@ -9,10 +9,10 @@ git clone git@github.com:hssrobotics23/read-and-chat.git
 cd read-and-chat
 ```
 
-Install the repository locally with python `3.6` or above.
+Install the repository locally with python `3.8` or above.
 
 ```
-python setup.py install
+python3 -m pip install -e .
 ```
 
 Then, run the command line tool `read-and-chat`.
@@ -21,6 +21,21 @@ Then, run the command line tool `read-and-chat`.
 read-and-chat
 ```
 
-### Interactive installation
+### Publishing
 
-To immediately apply edits, run `pip install -e .`
+Bundle the source code and the wheels.
+
+```
+python3 -m pip install build
+python3 -m build --sdist
+python3 -m build --wheel
+```
+
+To publish to pypi [with credentials][creds] in your `.pypirc`, run:
+
+```
+python3 -m pip install twine
+python3 -m twine upload dist/*
+```
+
+[creds]: https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/#id71
